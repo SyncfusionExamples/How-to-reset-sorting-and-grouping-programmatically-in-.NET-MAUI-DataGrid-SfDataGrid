@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SfDataGridSample.MainPage"
+             xmlns:local="clr-namespace:SfDataGridSample.ViewModel"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid">
+
+    <ContentPage.BindingContext>
+        <local:ViewModel  />
+    </ContentPage.BindingContext>
+    <Grid ColumnDefinitions="*,200" ColumnSpacing="5" Padding="10">
+        <VerticalStackLayout HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" Spacing="10">
+            <Button Text="Allow Sorting"
+                    Clicked="Button_Clicked"
+                    WidthRequest="150"/>
+            <Button Text="Clear Sorting"
+                    Clicked="Button_Clicked_1"
+                    WidthRequest="150"/>
+            <Button Text="Allow Grouping"
+                    Clicked="Button_Clicked_2"
+                    WidthRequest="150"/>
+            <Button Text="Clear Grouping"
+                    Clicked="Button_Clicked_3"
+                    WidthRequest="150"/>
+        </VerticalStackLayout>
+        <syncfusion:SfDataGrid x:Name="datagrid"
+                               Grid.Column="0"
+                               ColumnWidthMode="Fill"
+                               ItemsSource="{Binding OrderList}">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:DataGridNumericColumn MappingName="OrderID" HeaderText="Order ID"/>
+                <syncfusion:DataGridTextColumn MappingName="CustomerID" HeaderText="Customer ID"/>
+                <syncfusion:DataGridDateColumn MappingName="ShippingDate" HeaderText="Order Date"/>
+                <syncfusion:DataGridNumericColumn MappingName="SupplierID" HeaderText="Supplier ID"/>
+                <syncfusion:DataGridTextColumn MappingName="ShipCity" HeaderText="Shipping City"/>
+                <syncfusion:DataGridTextColumn MappingName="ShipCountry" HeaderText="Shipping Country"/>
+                <syncfusion:DataGridNumericColumn MappingName="Freight" HeaderText="Freight"/>
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+    </Grid>
+</ContentPage>
